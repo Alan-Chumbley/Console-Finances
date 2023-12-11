@@ -98,42 +98,121 @@ var finances = [
 
 //1.total number of months in data set
 
-var totalMonths = finances.length;
-console.log("Total Months : " + totalMonths);
+// var totalMonths = finances.length;
+// console.log("Total Months : " + totalMonths);
 
-//2.total Profit/Loss over entire period
+// //2.total Profit/Loss over entire period
 
-var revenue = 0; // I have to enable a global startpoint
+// var revenue = 0; // I have to enable a global startpoint
 
-//for loop to add all numbers in the array
+// //for loop to add all numbers in the array
 
-for ( var i = 0; i< finances.length;  i++) {
-  var monthData=finances[i]; //finances here means that i[] is adding
-  var financialValue = monthData[1];
-  revenue += financialValue; 
+// for ( var i = 0; i< finances.length;  i++) {
+//   var monthData=finances[i]; //finances here means that i[] is adding
+//   var financialValue = monthData[1];
+//   revenue += financialValue; 
 
-}
-
-
-console.log("Total : $" + revenue);
-//3.average changes of Profit/Loss over entire period
-
-var average = (revenue/ (totalMonths-1));
-console.log("Average Change : " + average );
+// }
+// console.log("Total : $" + revenue);
 
 
-// greatest increase in data
+// //3.average changes of Profit/Loss over entire period
+
+// var average = (revenue/ (totalMonths-1));
+// console.log("Average Change : " + average );
+
+
+// // greatest increase in data
+// var maxIncrease = 0;
+// var maxIncreaseDate = ""; 
+
+// for (var i = 1; i < finances.length; i++) {
+//   var currentMonth = finances[i];
+//   var previousMonth = finances[i - 1];
+
+//   var currentProfit = currentMonth[1];
+//   var previousProfit = previousMonth[1];
+
+//   var increase = currentProfit - previousProfit;
+
+//   if (increase > maxIncrease) {
+//     maxIncrease = increase;
+//     maxIncreaseDate = currentMonth[0];
+//   }
+// }
+
+// console.log("Greatest Date with Increase in Profit: " + maxIncreaseDate);
+// console.log("Greatest Increase in Profit: $ " + maxIncrease);
+
+// //greatest decrease in profit loses
+// var maxLoss = 0;
+// var maxLossDate = "";
+
+// for (var i = 1; i < finances.length; i++) {
+//   var currentMonth = finances[i];
+//   var previousMonth = finances[i - 1];
+
+//   var currentProfit = currentMonth[1];
+//   var previousProfit = previousMonth[1];
+
+//   var loss = previousProfit - currentProfit; // Calculate the loss
+
+//   if (loss > maxLoss) {
+//     maxLoss = loss;
+//     maxLossDate = currentMonth[0];
+//   }
+// }
+
+// console.log("Greatest Date with Greatest Loss:  " + maxLossDate);
+// console.log("Greatest Loss: $" + maxLoss)
+
+//TOTAL MONTHS ==================
+
+
+  var totalMonths = finances.length;
+  console.log("TOTAL MONTHS: "+ totalMonths);
+
+//TOTAL NET AMOUNT OF PROFIT /LOSS ==================
+
+
+  var total = 0; // starting point of 0 to + to
+  for (var i = 0; i < finances.length; i++) {
+    var monthAmount = finances[i][1]; // defining where data is.0,1 but LOOP has to go through i first
+    total += finances[i][1]; // add value of finances to current value of toal and then store back to the running total 0
+  
+  }
+
+
+console.log("TOTAL:$ " + total);
+
+//Average change =================================
+
+// var maxIncrease = 0;
+// var maxDate = ""; 
+
+
+// for (var i = 1; i < finances.length; i++) {
+//   totalMonths++;
+//   if (totalMonths > 1) {
+//     totalChange += finances[i][1] - finances[i - 1][1]; 
+//     var averageChange = totalChange / (numberOfMonths - 1);
+// console.log("The average change is: " + averageChange.toFixed(2));// slack channel discussion
+//   }
+// }
+
+// G  REATEST INCREASE =============================
 var maxIncrease = 0;
 var maxIncreaseDate = ""; 
 
 for (var i = 1; i < finances.length; i++) {
   var currentMonth = finances[i];
-  var previousMonth = finances[i - 1];
-
-  var currentProfit = currentMonth[1];
+  var previousMonth = finances[i - 1]; // go back to previous
+//state where profit lies within finances
+  var currentProfit = currentMonth[1]; 
   var previousProfit = previousMonth[1];
 
-  var increase = currentProfit - previousProfit;
+  // use ^ to find increase 
+  var increase = currentProfit - previousProfit; 
 
   if (increase > maxIncrease) {
     maxIncrease = increase;
@@ -144,24 +223,16 @@ for (var i = 1; i < finances.length; i++) {
 console.log("Greatest Date with Increase in Profit: " + maxIncreaseDate);
 console.log("Greatest Increase in Profit: $ " + maxIncrease);
 
-//greatest decrease in profit loses
+//GREATEST DECREASE =================================
 var maxLoss = 0;
 var maxLossDate = "";
 
 for (var i = 1; i < finances.length; i++) {
-  var currentMonth = finances[i];
-  var previousMonth = finances[i - 1];
+ var currentMonth = finances[i];
+ var previousMonth=  finances[i-1];
 
-  var currentProfit = currentMonth[1];
-  var previousProfit = previousMonth[1];
+  };
 
-  var loss = previousProfit - currentProfit; // Calculate the loss
-
-  if (loss > maxLoss) {
-    maxLoss = loss;
-    maxLossDate = currentMonth[0];
-  }
-}
 
 console.log("Greatest Date with Greatest Loss:  " + maxLossDate);
 console.log("Greatest Loss: $" + maxLoss)
